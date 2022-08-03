@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies For The Weekend</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- My Css Link -->
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Here's a list of movies to watch this weekend </h1>
+
+    <form action="/movies" method="POST">
+        <input type="text" placeholder="movie title" name="title">
+        <input type="text" placeholder="genre" name="genre">
+        <input type="text" placeholder="year released" name="year">
+        <input class="hide" type="number" name="likes">
+        <button type="submit">Add</button>
+    </form>
+
+    <h2> Recommended Movies </h2>
+
+    <ul class="movies">
+    <!-- Loop through quotes -->
+    <% for(var i = 0; i < movies.length; i++) {%>
+        <li class="movie">
+            <!-- Output title from the iterated movies object -->
+            <span><%= movies[i].title %></span>:
+            <!-- Output movie genre from the iterated movies object -->
+            <span><%= movies[i].genre %></span>
+            <!-- Output movie genre from the iterated movies object -->
+            <span><%= movies[i].year %></span>
+            <!-- Number of likes -->
+            <span class="likes"><%= movies[i].likes %></span>
+            <div class="update"> <i class='fas fa-thumbs-up' style='font-size:24px'></i></div>
+            <div class="delete"> <i class='fas fa-trash' style='font-size:24px'></i></div>
+        </li>
+    <% } %>
+    </ul>
+
+    <script src="/main.js"></script>
+</body>
+</html>
