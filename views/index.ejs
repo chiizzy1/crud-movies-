@@ -9,6 +9,8 @@
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
+    <link rel="stylesheet" href="font-awesome.min.css">
+
     <!-- My Css Link -->
     <link rel="stylesheet" href="/styles.css">
 </head>
@@ -19,7 +21,7 @@
         <input type="text" placeholder="movie title" name="title">
         <input type="text" placeholder="genre" name="genre">
         <input type="text" placeholder="year released" name="year">
-        <input class="hide" type="number" name="likes">
+        <!-- <input class="hide" type="number" name="likes"> -->
         <button type="submit">Add</button>
     </form>
 
@@ -36,9 +38,12 @@
             <!-- Output movie genre from the iterated movies object -->
             <span><%= movies[i].year %></span>
             <!-- Number of likes -->
-            <span class="likes"><%= movies[i].likes %></span>
-            <div class="update"> <i class='fas fa-thumbs-up' style='font-size:24px'></i></div>
-            <div class="delete"> <i class='fas fa-trash' style='font-size:24px'></i></div>
+            <span class="likes"><%= movies[i].thumbUp %></span>
+
+            <span><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
+            <span><i class="fa fa-trash" aria-hidden="true"></i></span>
+            <!-- <div class="update"> <i class='fas fa-thumbs-up' style='font-size:24px'></i></div>
+            <div class="delete"> <i class='fas fa-trash' style='font-size:24px'></i></div> -->
         </li>
     <% } %>
     </ul>

@@ -32,23 +32,27 @@ MongoClient.connect("mongodb+srv://movies:movies@movies.b48eem8.mongodb.net/?ret
     })
     
     app.post('/movies', (req, res) => {
-        // console.log(req.body)
-        movieCollection.insertOne(req.body)
+        
+        movieCollection.insertOne({title: req.body.title, genre: req.body.genre, year: req.body.year, thumbUp: 0 })
         .then(result => {
             res.redirect('/')
+            console.log('db updated');
           })
         .catch(error => console.error(error))
     })
+
+   
     
     app.put('/movies', (req, res) => {
         movieCollection.findOneAndUpdate(
-            { name: 'likes' },
+            { title: req.body.title, genre: req.body.genre, year: req.body.year },
             {
               $set: {
-                likes: req.body.likes + 1,
+                thumbUp: req.body.thumbUp + 1,
               }
             },
             {
+              sort: {_id: -1},
               upsert: true
             }
           )
@@ -61,7 +65,7 @@ MongoClient.connect("mongodb+srv://movies:movies@movies.b48eem8.mongodb.net/?ret
 
     app.delete('/quotes', (req, res) => {
         quotesCollection.deleteOne(
-            { name: req.body.name }
+            { title: req.body.title, genre: req.body.genre }
         )
             .then(result => {
                 res.json(`Deleted movie`)
