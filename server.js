@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 const app = express();
 const MongoClient = require('mongodb').MongoClient
 
-
+const PORT = 7001
 
 
 MongoClient.connect("mongodb+srv://movies:movies@movies.b48eem8.mongodb.net/?retryWrites=true&w=majority", { useUnifiedTopology: true })
@@ -74,7 +74,7 @@ MongoClient.connect("mongodb+srv://movies:movies@movies.b48eem8.mongodb.net/?ret
     })
 
 
-    app.listen(7100, function() {
+    app.listen(process.env.PORT || PORT, function() {
         console.log('listening on 7100')
     })
   })
